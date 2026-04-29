@@ -51,6 +51,7 @@ button { font-family: inherit; cursor: pointer; border: 0; background: 0; }
 }
 .section { padding-block: clamp(64px, 9vw, 120px); }
 .section-tight { padding-block: clamp(48px, 7vw, 80px); }
+main > .section:first-child { padding-top: clamp(32px, 4vw, 56px); }
 
 /* Typography */
 h1, h2, h3, h4 {
@@ -219,7 +220,10 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   flex-wrap: wrap;
 }
 .hero-meta .stat {
-  display: flex; flex-direction: column; gap: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
 }
 .hero-meta .stat strong {
   font-family: var(--serif);
@@ -227,10 +231,14 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   font-size: clamp(30px, 3vw, 40px);
   color: var(--navy);
   letter-spacing: -0.02em;
+  line-height: 1;
 }
 .hero-meta .stat span {
-  font-size: 13px; color: var(--ink-60);
-  text-transform: uppercase; letter-spacing: .12em;
+  font-size: 11.5px;
+  color: var(--ink-60);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  line-height: 1.35;
 }
 
 .hero-visual {
@@ -277,14 +285,15 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
 .hero-visual .viz-card .delta {
   font-size: 12px; color: var(--gold-dark); font-weight: 600; margin-top: 6px;
 }
-.viz-card-1 { top: 8%; left: 10%; }
-.viz-card-2 { bottom: 10%; right: 8%; }
+.viz-card-1 { top: 10%; left: 10%; max-width: 240px; }
+.viz-card-2 { bottom: 10%; right: 10%; max-width: 240px; }
 .viz-card-3 {
-  left: 50%; top: 45%; transform: translate(-50%, -50%);
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
   background: var(--gold); color: var(--navy);
 }
 .viz-card-3 .label { color: var(--navy); opacity: .7; }
 .viz-card-3 .value { color: var(--navy); }
+.viz-card-3 .delta { color: var(--navy); opacity: .75; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
@@ -494,15 +503,20 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
 }
 .team-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .team-card .avatar {
-  width: 64px; height: 64px;
+  width: 80px; height: 80px;
   border-radius: 50%;
   background: var(--navy);
   color: var(--gold);
   display: grid; place-items: center;
   font-family: var(--serif);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
   margin-bottom: 18px;
+}
+.team-card img.avatar {
+  display: block;
+  object-fit: cover;
+  object-position: center top;
 }
 .team-card h3 { font-family: var(--sans); font-size: 19px; font-weight: 600; margin-bottom: 4px; }
 .team-card .role {
@@ -520,6 +534,24 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   line-height: 1.55;
   margin: 0;
 }
+.team-card .social-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  transition: background .2s, color .2s, transform .2s;
+}
+.team-card .social-linkedin:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-1px);
+}
 
 /* Cases */
 .cases {
@@ -536,7 +568,8 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   background: radial-gradient(closest-side, rgba(245,185,33,.18), transparent 70%);
   pointer-events: none;
 }
-.cases h2 { color: var(--white); }
+.cases h2,
+.cases h2 em.italic { color: var(--white); }
 .cases p { color: rgba(255,255,255,.72); }
 .cases .eyebrow { color: var(--gold); }
 .cases .eyebrow::before { background: var(--gold); }
@@ -631,7 +664,7 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   background: radial-gradient(closest-side, rgba(245,185,33,.14), transparent 70%);
 }
 .contact-panel h2 { color: var(--white); }
-.contact-panel p { color: rgba(255,255,255,.7); }
+.contact-panel p { color: rgba(255,255,255,.7); margin-top: 20px; }
 .contact-panel .eyebrow { color: var(--gold); }
 .contact-panel .eyebrow::before { background: var(--gold); }
 .contact-locations {
