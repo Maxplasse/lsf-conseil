@@ -246,78 +246,29 @@ em.italic { font-family: var(--serif); font-style: italic; font-weight: 300; col
   aspect-ratio: 4/5;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: linear-gradient(160deg, var(--navy-700) 0%, var(--navy) 60%, var(--navy-900) 100%);
+  background: var(--navy);
   box-shadow: var(--shadow-lg);
 }
-.hero-visual::before {
-  content: "";
+.hero-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-visual-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(400px 300px at 20% 10%, rgba(245,185,33,.16), transparent 60%),
-    radial-gradient(500px 300px at 90% 80%, rgba(245,185,33,.08), transparent 60%);
+    linear-gradient(160deg, rgba(14,42,71,.55) 0%, rgba(14,42,71,.25) 55%, rgba(11,33,57,.65) 100%),
+    radial-gradient(500px 320px at 90% 90%, rgba(245,185,33,.18), transparent 65%);
+  pointer-events: none;
 }
-.hero-visual .viz-lines {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.2));
-}
-.hero-visual .viz-card {
-  position: absolute;
-  background: rgba(255,255,255,.96);
-  border-radius: var(--radius);
-  padding: 20px 22px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  min-width: 200px;
-}
-.hero-visual .viz-card .label {
-  font-size: 11px; text-transform: uppercase; letter-spacing: .12em;
-  color: var(--ink-40); margin-bottom: 10px; font-weight: 600;
-}
-.hero-visual .viz-card .value {
-  font-family: var(--serif); font-size: 28px; color: var(--navy); font-weight: 400;
-  line-height: 1.1;
-}
-.hero-visual .viz-card .delta {
-  font-size: 12px; color: var(--gold-dark); font-weight: 600; margin-top: 6px;
-}
-.viz-card-1 { top: 10%; left: 10%; max-width: 240px; }
-.viz-card-2 { bottom: 10%; right: 10%; max-width: 240px; }
-.viz-card-3 {
-  left: 50%; top: 50%; transform: translate(-50%, -50%);
-  background: var(--gold); color: var(--navy);
-}
-.viz-card-3 .label { color: var(--navy); opacity: .7; }
-.viz-card-3 .value { color: var(--navy); }
-.viz-card-3 .delta { color: var(--navy); opacity: .75; }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { aspect-ratio: 4/3; max-width: 520px; }
-}
-@media (max-width: 640px) {
-  .hero-visual {
-    aspect-ratio: auto;
-    padding: 28px 22px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 18px;
-    min-height: 380px;
-  }
-  .hero-visual .viz-card {
-    position: static;
-    transform: none !important;
-    min-width: 0;
-    width: 100%;
-    padding: 16px 18px;
-  }
-  .hero-visual .viz-card .value { font-size: 22px; }
-  .viz-card-3 { align-self: center; max-width: 260px; text-align: center; }
+  .hero-visual { aspect-ratio: 16/10; max-width: 640px; }
 }
 
 /* Sections generic */
